@@ -48,7 +48,7 @@ Parameters:
 
   CodeBuildDockerImage:
     Type: String
-    Default: aws/codebuild/python:3.7
+    Default: aws/codebuild/python:3.7.1
     Description: Default AWS CodeBuild Docker optimized image
     MinLength: 3
     MaxLength: 100
