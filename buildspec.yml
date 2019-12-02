@@ -11,8 +11,7 @@ phases:
       - export PATH=$PWD/:$PATH
       - apt-get install software-properties-common
       - add-apt-repository ppa:deadsnakes/ppa
-      - apt-get update && apt-get -y install jq python3.7-dev python3-pip && pip3 install --upgrade awscli
-      - pip3 install asyncio
+      - apt-get update && apt-get -y install jq python3.7
   pre_build:
       commands:
         - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
