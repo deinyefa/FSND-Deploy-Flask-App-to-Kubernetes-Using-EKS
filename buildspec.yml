@@ -11,14 +11,14 @@ phases:
       - export PATH=$PWD/:$PATH
       - apt-get install -y software-properties-common
       - add-apt-repository ppa:deadsnakes/ppa
-      - apt-get update && apt-get -y install jq python3-pip python3.7-dev python3.7 && pip3 install --upgrade awscli typing
+      - apt-get update && apt-get -y install jq python3-pip python3.7-dev python3.7 && python3.7 -m pip install --upgrade awscli typing
   pre_build:
       commands:
         - TAG="$REPOSITORY_NAME.$REPOSITORY_BRANCH.$ENVIRONMENT_NAME.$(date +%Y-%m-%d.%H.%M.%S).$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
         - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$TAG"'@' simple_jwt_api.yml
         - $(aws ecr get-login --no-include-email)
         - export KUBECONFIG=$HOME/.kube/config
-        - pip3 install -r requirements.txt
+        - python3.7 -m pip install -r requirements.txt
         - python3.7 -m test_main.py
   build:
     commands:
