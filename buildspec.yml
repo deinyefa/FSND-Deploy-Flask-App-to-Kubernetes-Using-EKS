@@ -11,8 +11,8 @@ phases:
       - export PATH=$PWD/:$PATH
       - add-apt-repository ppa:deadsnakes/ppa
       - apt-get update && apt-get -y install jq python3-pip python3.7
-      - update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7
-      - update-alternatives --config python3
+      - update-alternatives --set python /usr/bin/python3.7
+      - update-alternatives --set python3 /usr/bin/python3.7
       - pip3 install --upgrade awscli typing
   pre_build:
       commands:
