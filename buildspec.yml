@@ -10,7 +10,6 @@ phases:
       - chmod +x ./kubectl ./aws-iam-authenticator
       - export PATH=$PWD/:$PATH
       - apt-get update && apt-get -y install jq
-      - pip install --upgrade pip
       - pip3 install --upgrade awscli
   pre_build:
       commands:
